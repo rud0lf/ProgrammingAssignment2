@@ -5,6 +5,7 @@
  ##Initially the inverse which is denoted by inv is set to NULL.
  ##The function getMat when called, returns the original matrix and the function getinv returns the inverse of the matrix from the cache.
  #The function setinv is used to store the inverse of the matrix as cache.
+ ##The function set() is used to change the original matrix.
  #Finally, the function makeCacheMatrix returns a list containing 3 functions described above.
   
   makeCacheMatrix <- function(x = matrix()) {
@@ -12,7 +13,11 @@
          getMat<-function() x
          setinv<-function(inverse) inv<<-inverse
          getinv<-function() inv
-         list(getMat=getMat,setinv=setinv,getinv=getinv)
+         set <- function(y) {
+                x <<- y
+                inv <<- NULL
+        }
+         list(set=set,getMat=getMat,setinv=setinv,getinv=getinv)
   
   }
   
